@@ -21,11 +21,11 @@
     <parent>
         <groupId>org.jboss.osgi.testsuite</groupId>
         <artifactId>jbosgi-testsuite</artifactId>
-        <version>2.2.0</version>
+        <version>2.3.1.Final</version>
     </parent>
-    
+
     <name>JBossOSGi Testsuite Functional</name>
-    
+
     <artifactId>jbosgi-testsuite-functional</artifactId>
     <packaging>jar</packaging>
 
@@ -33,7 +33,7 @@
     <properties>
         <project.root.dir>${basedir}/../..</project.root.dir>
     </properties>
-    
+
     <!-- Dependencies -->
     <dependencies>
         <dependency>
@@ -45,7 +45,7 @@
             <artifactId>jbosgi-testsuite-example</artifactId>
             <version>${project.version}</version>
         </dependency>
-        
+
         <!-- Provided -->
         <dependency>
             <groupId>org.apache.felix</groupId>
@@ -168,7 +168,7 @@
                     <plugin>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
-                            <argLine>${surefire.system.args} ${surefire.security.args}</argLine>
+                            <argLine>@{jacocoArgLine} @{surefire.system.args} @{surefire.security.args}</argLine>
                             <excludes>
                                 <!-- [JBOSGI-639] Bundle update fails in AS8 -->
                                 <exclude>**/*BundleUpdateTestCase.java</exclude>

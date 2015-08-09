@@ -113,6 +113,7 @@
                 <capability name="javax.ws.rs.api"/>
                 <capability name="javax.xml.bind.api"/>
                 <capability name="javax.xml.ws.api"/>
+
                 <!-- bundles started in startlevel 1 -->
                 <capability name="org.apache.felix.log" startlevel="1"/>
                 <capability name="org.jboss.osgi.logging" startlevel="1"/>
@@ -121,6 +122,12 @@
                 <capability name="org.apache.felix.scr" startlevel="1"/>
                 <capability name="org.jboss.as.osgi.http" startlevel="1"/>
                 <capability name="org.jboss.as.osgi.jpa" startlevel="1"/>
+                <capability name="org.apache.felix.webconsole" startlevel="1"/>
+                <capability name="org.apache.aries.blueprint" startlevel="1"/>
+                <capability name="org.apache.aries.jmx" startlevel="1"/>
+                <capability name="org.apache.aries.jndi" startlevel="1"/>
+                <capability name="org.apache.aries.proxy" startlevel="1"/>
+                <capability name="org.apache.aries.util" startlevel="1"/>
             </capabilities>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:datasources:2.0">

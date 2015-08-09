@@ -23,7 +23,7 @@
     <parent>
         <groupId>org.jboss.osgi.testsuite</groupId>
         <artifactId>jbosgi-testsuite</artifactId>
-        <version>2.2.0</version>
+        <version>2.3.1.Final</version>
     </parent>
 
     <name>JBossOSGi Testsuite Examples</name>
@@ -35,15 +35,10 @@
     <properties>
         <project.root.dir>${basedir}/../..</project.root.dir>
     </properties>
-    
+
     <!-- Dependencies -->
     <dependencies>
         <!-- Provided -->
-        <dependency>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
         <dependency>
             <groupId>org.apache.felix</groupId>
             <artifactId>org.apache.felix.configadmin</artifactId>
@@ -65,6 +60,36 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.apache.felix.webconsole</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.aries.blueprint</groupId>
+            <artifactId>org.apache.aries.blueprint</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.aries.jmx</groupId>
+            <artifactId>org.apache.aries.jmx</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.aries.jndi</groupId>
+            <artifactId>org.apache.aries.jndi</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.aries.proxy</groupId>
+            <artifactId>org.apache.aries.proxy</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.aries</groupId>
+            <artifactId>org.apache.aries.util</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>org.jboss.osgi.framework</groupId>
             <artifactId>jbosgi-framework-core</artifactId>
             <scope>provided</scope>
@@ -75,33 +100,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.0-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.spec.javax.annotation</groupId>
-            <artifactId>jboss-annotations-api_1.1_spec</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.spec.javax.ejb</groupId>
-            <artifactId>jboss-ejb-api_3.1_spec</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.spec.javax.servlet</groupId>
-            <artifactId>jboss-servlet-api_3.0_spec</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.spec.javax.transaction</groupId>
-            <artifactId>jboss-transaction-api_1.2_spec</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.spec.javax.ws.rs</groupId>
-            <artifactId>jboss-jaxrs-api_1.1_spec</artifactId>
+            <groupId>org.jboss.spec</groupId>
+            <artifactId>jboss-javaee-7.0</artifactId>
+            <type>pom</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -209,7 +210,7 @@
                     <plugin>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
-                            <argLine>${surefire.system.args} ${surefire.security.args}</argLine>
+                            <argLine>@{jacocoArgLine} @{surefire.system.args} @{surefire.security.args}</argLine>
                             <excludes>
                                 <exclude>**/cdi/*TestCase.java</exclude>
                                 <exclude>**/ear/*TestCase.java</exclude>
@@ -231,7 +232,7 @@
                 </plugins>
             </build>
         </profile>
-        
+
         <profile>
             <id>wildfly-testing</id>
             <activation>
@@ -251,7 +252,7 @@
                     <plugin>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
-                            <argLine>${surefire.system.args} ${surefire.security.args}</argLine>
+                            <argLine>@{jacocoArgLine} @{surefire.system.args} @{surefire.security.args}</argLine>
                             <excludes>
                                 <exclude>**/*StandaloneTestCase.java</exclude>
                             </excludes>
